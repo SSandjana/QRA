@@ -2,6 +2,7 @@ package com.quick.response.application.global.controller;
 
 import com.quick.response.application.global.dto.AanrijdingsformulierDTO;
 import com.quick.response.application.global.dto.ChangePasswordDto;
+import com.quick.response.application.global.dto.ClaimDto;
 import com.quick.response.application.global.entities.Aanrijdingsformulieren;
 import com.quick.response.application.global.services.AanrijdingsformulierService;
 import lombok.AllArgsConstructor;
@@ -46,9 +47,9 @@ public class AanrijdingsformulierenController {
         return new ResponseEntity<>(result, OK);
     }
 
-    @PutMapping("/update")
-    public ResponseEntity<String> update(@RequestBody String status, String naam){
-        aanrijdingsformulierService.change(status, naam);
+    @PostMapping("/update")
+    public ResponseEntity<String> update(@RequestBody ClaimDto claimDto){
+        aanrijdingsformulierService.change(claimDto.getClaim(), claimDto.getNaam());
         return new ResponseEntity<>("Success", OK);
     }
 
