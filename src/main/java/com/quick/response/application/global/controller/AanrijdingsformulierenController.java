@@ -34,6 +34,14 @@ public class AanrijdingsformulierenController {
         return new ResponseEntity<>(aanrijdingsformulieren, HttpStatus.OK);
     }
 
+
+
+    @GetMapping("/find/all/formulieren/by/user/id/{userId}")
+    public ResponseEntity<List<Aanrijdingsformulieren>> findAllByUserId(@PathVariable("userId") Long userId) {
+        List<Aanrijdingsformulieren> aanrijdingsformulieren = aanrijdingsformulierService.findAllByUserId(userId);
+        return new ResponseEntity<>(aanrijdingsformulieren, HttpStatus.OK);
+    }
+
     @PostMapping("/register")
     public ResponseEntity<?> registreerAanrijdingsformulier(@RequestBody AanrijdingsformulierDTO aanrijdingsformulierDTO) {
         Aanrijdingsformulieren formulier = aanrijdingsformulierService

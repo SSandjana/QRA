@@ -18,4 +18,5 @@ public interface AanrijdingsformulierService {
 
     void change(String status, String naam);
 
+    List<Aanrijdingsformulieren> findAllByUserId(Long userId);
 }

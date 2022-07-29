@@ -38,6 +38,11 @@ public class AanrijdingsformulierImpl implements AanrijdingsformulierService {
         return aanrijdingsformulierRepository.findAll();
     }
 
+    @Override
+    public List<Aanrijdingsformulieren> findAllByUserId(Long userId) {
+        return aanrijdingsformulierRepository.findAllByUserId(userId);
+    }
+
     @Transactional
     @Override
     public Aanrijdingsformulieren registreerAanrijdingsformulier(AanrijdingsformulierDTO formulier) {
@@ -55,7 +60,7 @@ public class AanrijdingsformulierImpl implements AanrijdingsformulierService {
     @Override
     public boolean changeStatus(String naam) {
         Aanrijdingsformulieren formulier = aanrijdingsformulierRepository.findAanrijdingsformulierenByNaamContaining(naam);
-        if (formulier != null){
+        if (formulier != null) {
             formulier.setAfgehandeld("accepted");
             aanrijdingsformulierRepository.save(formulier);
             return true;

@@ -17,6 +17,8 @@ public interface AanrijdingsformulierRepository extends JpaRepository<Aanrijding
 
     List<Aanrijdingsformulieren> findAll();
 
+    List<Aanrijdingsformulieren> findAllByUserId(Long userId);
+
     @Transactional
     @Modifying
     @Query(value = "update aanrijdingsformulieren a set a.afgehandeld = :status where a.naam = :naam", nativeQuery = true)
